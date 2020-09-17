@@ -19,7 +19,13 @@ public class MoneyCounter : MonoBehaviour
             lastMoney += Mathf.Clamp(money - lastMoney, -1, 1);
         }
 
-        textObject.text = $"{GetMoneyCharacter(lastMoney)}{displayAmount}" + (money > lastMoney ? $" {GetMoneyCharacter(money - lastMoney)}{money - lastMoney}" : "");
+        if (lastMoney == 0)
+        {
+            textObject.text = "";
+        }
+        else
+
+            textObject.text = $"{GetMoneyCharacter(lastMoney)}{displayAmount}" + (money > lastMoney ? $" {GetMoneyCharacter(money - lastMoney)}{money - lastMoney}" : "");
     }
 
     private char GetMoneyCharacter(int val)
